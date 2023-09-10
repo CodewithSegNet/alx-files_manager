@@ -8,7 +8,7 @@ class RedisClient {
 
     // Initialize a flag to track the connection
     // status based on the client's status
-    this.isConnected = true;
+    this.isConnected = false;
 
     this.getAsync = util.promisify(this.client.get).bind(this.client);
     this.setAsync = util.promisify(this.client.set).bind(this.client);
