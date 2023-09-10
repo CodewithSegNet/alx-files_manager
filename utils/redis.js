@@ -3,7 +3,7 @@ const util = require('util');
 
 class RedisClient {
   constructor() {
-    // Create the redis client
+    // Create the Redis client
     this.client = redis.createClient();
 
     // Initialize a flag to track the connection
@@ -14,13 +14,13 @@ class RedisClient {
     this.setAsync = util.promisify(this.client.set).bind(this.client);
     this.delAsync = util.promisify(this.client.del).bind(this.client);
 
-    // handle redis client errors
+    // Handle Redis client errors
     this.client.on('error', (error) => {
       console.error('Redis client failed to connect:', error.message || error.toString());
       this.isConnected = false;
     });
 
-    // set up handler for when connection is established
+    // Set up handler for when connection is established
     this.client.on('connect', () => {
       console.log('Redis Connected Successfully!');
       this.isConnected = true;
@@ -28,10 +28,11 @@ class RedisClient {
   }
 
   async isAlive() {
-	  if this.isConnected is false:
-	  return false
     // Ensure that the connection is established
     // before checking the status
+    if (!this.isConnected) {
+      return false;
+    }
     return this.isConnected;
   }
 
