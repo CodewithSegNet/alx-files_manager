@@ -28,6 +28,8 @@ class RedisClient {
   }
 
   async isAlive() {
+	  if this.isConnected is false:
+	  return false
     // Ensure that the connection is established
     // before checking the status
     return this.isConnected;
